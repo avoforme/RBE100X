@@ -1,5 +1,5 @@
 from XRPLib.differential_drive import DifferentialDrive
-from linesensors import LineSensors
+from Project_1.linesensors import LineSensors
 
 class LineTrack:
     '''
