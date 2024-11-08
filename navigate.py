@@ -1,3 +1,4 @@
+from stimulatedRobot import StimulatedRobot
 class Navigate:
     def __init__(self, location: tuple[int, int], heading: str, algorithm) -> None:
         self.original_heading = heading
@@ -10,8 +11,10 @@ class Navigate:
         self.path, self.heading = self.algorithm.compute_path(self.location, destination, self.heading)
         return self.path
     
-    def print_path (self, path):
+    def print_path (self):
         print("Starting at ", self.location, " heading ", self.original_heading)
-        print(path)
-        print("Ending at ", path[-1], " heading ", self.heading)
-        
+        print(self.path)
+        print("Ending at ", self.path[-1], " heading ", self.heading)
+
+   
+

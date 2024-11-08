@@ -6,5 +6,5 @@ from navigate import Navigate
 # print(path)
 
 navigate = Navigate((0, 0), "N", Manhattan())
-navigate.compute_path((3, 2))
-navigate.print_path(navigate.path)
+navigate.compute_path((2, 2))
+navigate.print_path()
