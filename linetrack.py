@@ -74,5 +74,12 @@ class LineTrack:
             current_heading = self.DIRECTION[(current_heading + 1) % 4]
             self.track_to_intersection()
         return current_heading
-
-
+    
+# 8.5 cm should be the distance to drive past the intersection, 15% of the robot's effort
+    def drive_past_intersection(self) -> None:
+        '''
+        Drive the robot past the interection that it just stopped at so that the
+        same intersection won't be immediatly detected again as another intersection.
+        '''
+        self.drivetrain.straight(8.5, self.DRIVE_SPEED * 0.15)
+    
