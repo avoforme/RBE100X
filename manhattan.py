@@ -1,13 +1,12 @@
 #init in nav class should instantiate the heading, east west and north south, default should be north
 # two loop for col, two loop for row. each for one +1, -1.
 class Manhattan:
-    def compute_path(self, start_tuple, end_tuple, heading) -> list[tuple[int, int]]:
+    def compute_path(self, start_tuple, end_tuple) -> list[tuple[int, int]]:
         '''
         This function computes the path from the start to the end point.
         It also updates the heading as the path is traversed.
         '''
-        final_heading = heading
-        current_row, current_col = start_tuple  # type: ignore
+        current_row, current_col = start_tuple
         end_row, end_col = end_tuple
         path = []
         path.append((current_row, current_col))
@@ -16,21 +15,13 @@ class Manhattan:
             if current_row + 1 <= end_row:
                 current_row += 1
                 path.append((current_row, current_col))
-                if final_heading != "N":  
-                    final_heading = "N"
             if current_row -1 >= end_row:
                 current_row -= 1
                 path.append((current_row, current_col))
-                if final_heading != "S": 
-                    final_heading = "S"
             if current_col +1<= end_col:
                 current_col += 1
                 path.append((current_row, current_col))
-                if final_heading != "E": 
-                    final_heading = "E"
             if current_col -1>= end_col:
                 current_col -= 1
                 path.append((current_row, current_col))
-                if final_heading != "W":  
-                    final_heading = "W"
-        return path, final_heading # type: ignore
+        return path # type: ignore

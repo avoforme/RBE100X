@@ -2,9 +2,12 @@ from manhattan import Manhattan
 from navigate import Navigate
 
 
-# path = Manhattan.compute_path((4, 4), (3, 3))
-# print(path)
 
-navigate = Navigate((0, 0), "N", Manhattan())
-navigate.compute_path((2, 2))
-navigate.print_path()
+navigate = Navigate((0, 0), 0, Manhattan())
+for destination in [(4,4), (6,5), (0,0)]:
+    print('----------------')
+    path = navigate.compute_path(destination)
+    navigate.drive_path()
+    print("Trip ended. Arrived at ", destination)
+    print('----------------')
+
