@@ -15,6 +15,10 @@ class Navigate:
         print("Starting at ", self.location, " heading ", self.original_heading)
         print(self.path)
         print("Ending at ", self.path[-1], " heading ", self.heading)
-
+    
+    def drive_path(self):
+        robot = StimulatedRobot(self.location, self.original_heading, self.path)
+        for location in self.path:
+            robot.drive_to(location)
    
 
