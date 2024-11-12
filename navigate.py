@@ -13,7 +13,7 @@ class Navigate:
         Initializes the Navigate object with a starting location, heading, and pathfinding algorithm.
         '''
         self.linetrack = LineTrack()
-        self.heading = self.DIRECTION[heading]
+        self.heading = heading
         self.location = location
         self.algorithm = algorithm
         self.path = []
@@ -42,43 +42,46 @@ class Navigate:
 
         # move one row up
         if current_row + 1 == end_row:
-                print("Moving up from ", self.location, " to ", location)
-
-                self.heading = self.linetrack.turn_then_track(current_heading, 0)
-
-                current_row += 1
-                # if current_heading != "N":  
-                #     current_heading = "N"
+            print("Moving up from ", self.location, " to ", location)
+            print("Current heading is ", current_heading)
+            self.heading = self.linetrack.turn_then_track(current_heading, 0)
+            print("New heading is ", self.heading)
+            current_row += 1
+            # if current_heading != "N":  
+            #     current_heading = "N"
                 
                 
         # move one row down
-        if current_row -1 == end_row:
-                print("Moving down from ", self.location, " to ", location)
+        elif current_row -1 == end_row:
+            print("Moving down from ", self.location, " to ", location)
+            print("Current heading is ", current_heading)
+            self.heading = self.linetrack.turn_then_track(current_heading, 2)
+            print("New heading is ", self.heading)
 
-                self.heading = self.linetrack.turn_then_track(current_heading, 2)
-
-
-                current_row -= 1
+            current_row -= 1
                 # if current_heading != "S": 
                 #     current_heading = "S"
 
         # move one column right
-        if current_col +1 == end_col:
-                print("Moving right from ", self.location, " to ", location)
+        elif current_col +1 == end_col:
+            print("Moving right from ", self.location, " to ", location)
+            print("Current heading is ", current_heading)
+            self.heading = self.linetrack.turn_then_track(current_heading, 1)
+            print("New heading is ", self.heading)
 
-                self.heading = self.linetrack.turn_then_track(current_heading, 1)
-
-                current_col += 1
+            current_col += 1
                 # if current_heading != "E": 
                 #     current_heading = "E"
 
         # move one column left
-        if current_col -1 == end_col:
-                print("Moving left from ", self.location, " to ", location)
+        elif current_col -1 == end_col:
+            print("Moving left from ", self.location, " to ", location)
 
-                self.heading = self.linetrack.turn_then_track(current_heading, 3)
+            print("Current heading is ", current_heading)
+            self.heading = self.linetrack.turn_then_track(current_heading, 3)
+            print("New heading is ", self.heading)
 
-                current_col -= 1
+            current_col -= 1
                 # if current_heading != "W":  
                 #     current_heading = "W"
 

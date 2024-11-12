@@ -9,7 +9,7 @@ class LineTrack:
     '''
     # TURN_SPEED: float = 0.40
     DIRECTION = ["N", "E", "S", "W"]
-    DRIVE_SPEED: float = 20
+    DRIVE_SPEED: float = 30
     Kp: float = 25
     # DIST_TO_CENTER: float = 8.75
 
@@ -51,6 +51,12 @@ class LineTrack:
                 right_effort = original_effort
                 self.drivetrain.set_speed(left_effort, right_effort)
 
+    def turn_left(self) -> None:
+        '''
+        Turn the robot to the left
+        '''
+        self.drivetrain.turn(90)
+        
     def turn_right(self) -> None:
         '''
         Turn the robot to the right
@@ -67,13 +73,32 @@ class LineTrack:
 
     def turn_then_track(self, current_heading, to_turn_to) -> None:
         '''
-        Turn the robot to the right direction then track the line
+        Turn the robot to the right direction with minimal turns, then track the line
         '''
-        while(current_heading != to_turn_to):
+        # Calculate the difference in headings
+        difference = (to_turn_to - current_heading) % 4
+
+        # Determine the shortest turn
+        if difference == 1:
+            # Right turn needed
             self.turn_right()
-            current_heading = self.DIRECTION[(current_heading + 1) % 4]
-            self.track_to_intersection()
+            current_heading = (current_heading + 1) % 4
+        elif difference == 3:
+            # Left turn needed (equivalent to -1 mod 4)
+            self.turn_left()
+            current_heading = (current_heading - 1) % 4
+        elif difference == 2:
+            # Turn around needed
+            self.turn_around()
+            current_heading = (current_heading + 2) % 4
+
+        # After turning, track and drive past the intersection
+        self.track_to_intersection()
+        self.drive_past_intersection()
+        
+        print("Heading:", current_heading)
         return current_heading
+
     
 # 8.5 cm should be the distance to drive past the intersection, 15% of the robot's effort
     def drive_past_intersection(self) -> None:
@@ -81,5 +106,5 @@ class LineTrack:
         Drive the robot past the interection that it just stopped at so that the
         same intersection won't be immediatly detected again as another intersection.
         '''
-        self.drivetrain.straight(8.5, self.DRIVE_SPEED * 0.15)
+        self.drivetrain.straight(8.5, self.DRIVE_SPEED)
     
