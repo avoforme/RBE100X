@@ -9,8 +9,8 @@ class LineTrack:
     '''
     # TURN_SPEED: float = 0.40
     DIRECTION = ["N", "E", "S", "W"]
-    DRIVE_SPEED: float = 30
-    Kp: float = 25
+    DRIVE_SPEED: float = 20
+    Kp: float = 20
     # DIST_TO_CENTER: float = 8.75
 
     def __init__(self) -> None:
@@ -55,20 +55,26 @@ class LineTrack:
         '''
         Turn the robot to the left
         '''
-        self.drivetrain.turn(90)
+        self.drivetrain.turn(40)
+        while not self.line_sense.either_on_line():
+            self.drivetrain.set_effort(-0.5, 0.5)
         
     def turn_right(self) -> None:
         '''
         Turn the robot to the right
         '''
-        self.drivetrain.turn(-90)
+        self.drivetrain.turn(-40)
+        while not self.line_sense.either_on_line():
+            self.drivetrain.set_effort(0.5, -0.5)
 
 
     def turn_around(self) -> None:
         '''
         Turn the robot around
         '''
-        self.drivetrain.turn(180)
+        self.drivetrain.turn(160)
+        while not self.line_sense.either_on_line():
+            self.drivetrain.set_effort(-0.5, 0.5)
 
 
     def turn_then_track(self, current_heading, to_turn_to) -> None:
@@ -100,11 +106,11 @@ class LineTrack:
         return current_heading
 
     
-# 8.5 cm should be the distance to drive past the intersection, 15% of the robot's effort
+# 8.5 cm should be the distance to drive past the intersection, 50% of the robot's effort
     def drive_past_intersection(self) -> None:
         '''
         Drive the robot past the interection that it just stopped at so that the
         same intersection won't be immediatly detected again as another intersection.
         '''
-        self.drivetrain.straight(8.5, self.DRIVE_SPEED)
+        self.drivetrain.straight(8.5, self.DRIVE_SPEED * 0.5)
     

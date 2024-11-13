@@ -42,48 +42,23 @@ class Navigate:
 
         # move one row up
         if current_row + 1 == end_row:
-            print("Moving up from ", self.location, " to ", location)
-            print("Current heading is ", current_heading)
             self.heading = self.linetrack.turn_then_track(current_heading, 0)
-            print("New heading is ", self.heading)
             current_row += 1
-            # if current_heading != "N":  
-            #     current_heading = "N"
-                
                 
         # move one row down
         elif current_row -1 == end_row:
-            print("Moving down from ", self.location, " to ", location)
-            print("Current heading is ", current_heading)
             self.heading = self.linetrack.turn_then_track(current_heading, 2)
-            print("New heading is ", self.heading)
-
             current_row -= 1
-                # if current_heading != "S": 
-                #     current_heading = "S"
-
+            
         # move one column right
         elif current_col +1 == end_col:
-            print("Moving right from ", self.location, " to ", location)
-            print("Current heading is ", current_heading)
             self.heading = self.linetrack.turn_then_track(current_heading, 1)
-            print("New heading is ", self.heading)
-
-            current_col += 1
-                # if current_heading != "E": 
-                #     current_heading = "E"
+            current_col += 1                
 
         # move one column left
         elif current_col -1 == end_col:
-            print("Moving left from ", self.location, " to ", location)
-
-            print("Current heading is ", current_heading)
             self.heading = self.linetrack.turn_then_track(current_heading, 3)
-            print("New heading is ", self.heading)
-
             current_col -= 1
-                # if current_heading != "W":  
-                #     current_heading = "W"
 
         self.location = (current_row, current_col)
         

@@ -28,15 +28,15 @@ class LineSensors:
         Return true if the line tracking sensors are above an intersecton (cross)
         This is true if both sensors are seeingn a black level
         '''
-        return self.reflectance.get_left() >= 0.9 and self.reflectance.get_right() >= 0.9
+        return self.reflectance.get_left() >= 0.8 and self.reflectance.get_right() >= 0.8
     
-    # def either_on_line(self) -> bool:
-    #     '''
-    #     Return true if either of the sensors is on a taped line
-    #     This is useful for making turns back to the line when turning around
-    #     or looking for an intersection while the robot is turning.
-    #     '''
-    #     pass
+    def either_on_line(self) -> bool:
+        '''
+        Return true if either of the sensors is on a taped line
+        This is useful for making turns back to the line when turning around
+        or looking for an intersection while the robot is turning.
+        '''
+        return self.reflectance.get_left() >= 0.9 or self.reflectance.get_right() >= 0.9
             
 
     def report_values(self) -> None:
