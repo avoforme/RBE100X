@@ -4,7 +4,7 @@ from navigate import Navigate
 
 
 navigate = Navigate((2, 2), 0, Manhattan())
-for destination in [(3, 2), (3, 1), (5,1), (5,0)]:
+for destination in [(4,3), (6,2), (1,1)]:
     print('----------------')
     path = navigate.compute_path(destination)
     navigate.drive_path()
