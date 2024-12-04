@@ -4,6 +4,7 @@ class Manhattan:
     def compute_path(self, start_tuple, end_tuple) -> list[tuple[int, int]]:
         '''
         This function computes the path from the start to the end point.
+        It moves by one row or column at a time until it reaches the end point.
         It also updates the heading as the path is traversed.
         '''
         current_row, current_col = start_tuple
