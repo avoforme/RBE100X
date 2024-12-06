@@ -8,25 +8,27 @@ class Navigate:
     adjustments to achieve correct alignment and positioning.
     
     '''
-    def __init__(self, location: tuple[int, int], heading: int, algorithm) -> None:
+    def __init__(self, location: tuple[int, int], heading: int) -> None:
         '''
         Initializes the Navigate object with a starting location, heading, and pathfinding algorithm.
         '''
         self.linetrack = LineTrack()
         self.heading = heading
         self.location = location
-        self.algorithm = algorithm
         self.path = []
 
-    def compute_path(self, destination: tuple[int, int]) -> list[tuple[int, int]]:
-        """
-        Computes the shortest path from the current location to the destination using the specified algorithm.
-        """
-        print("Starting at ", self.location)
-        self.path = self.algorithm.compute_path(self.location, destination)
-        print("Computed Path: ", self.path)
-        print("Ending at ", self.path[-1])
-        return self.path
+    # def compute_path(self, destination: tuple[int, int]) -> list[tuple[int, int]]:       
+    #     '''
+    #     Computes the shortest path from the current location to the destination using the specified algorithm.
+    #     ''' 
+
+    #     print("Starting at ", self.location)
+        
+    #     self.path = self.algorithm.compute_path(self.location, destination)
+        
+    #     print(self.path)
+    #     print("Ending at ", self.path[-1])
+    #     return self.path
 
     
     def drive_to(self, location: tuple[int, int]) -> None:
@@ -61,11 +63,11 @@ class Navigate:
 
         self.location = (current_row, current_col)
         
-    def drive_path(self) -> None:
+    def drive_path(self, path) -> None:
         '''
         Drives along the precomputed path by calling drive_to() for each location in the path.
         '''
-        for location in self.path:
+        for location in path:
             self.drive_to(location)
    
 

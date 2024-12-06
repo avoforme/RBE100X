@@ -1,9 +1,12 @@
-from dijkstra.grid import Grid
-from dijkstra.dijkstra import Dijkstra
+from dijkstra import Dijkstra
+from grid import Grid
+from navigate import Navigate
 
+GRID_ROWS = 10
+GRID_COLS = 5
 
-# Create a 5x5 grid
-grid = Grid(5, 10)
+# Create a grid
+grid = Grid(GRID_ROWS, GRID_COLS)
 
 # Set some blocked nodes
 grid.set_blocked((1, 1))
@@ -15,6 +18,8 @@ grid.connect_neighbors()
 
 # Initialize Dijkstra algorithm
 dijkstra = Dijkstra(grid)
+path = dijkstra.compute_path((0,0), (4,4))
+print(path)
 
-# Compute and print the path from (0, 0) to (4, 4)
-path = dijkstra.compute_path((0, 0), (4, 4))
+navigate = Navigate((0, 0), 0)
+navigate.drive_path(path)  # Drive the computed path

@@ -1,10 +1,11 @@
-from grid import Grid
 from dijkstra import Dijkstra
+from grid import Grid
 
+GRID_ROWS = 10
+GRID_COLS = 5
 
-
-# Create a 5x5 grid
-grid = Grid(5, 5)
+# Create a grid
+grid = Grid(GRID_ROWS, GRID_COLS)
 
 # Set some blocked nodes
 grid.set_blocked((1, 1))
@@ -16,6 +17,5 @@ grid.connect_neighbors()
 
 # Initialize Dijkstra algorithm
 dijkstra = Dijkstra(grid)
+print(dijkstra.compute_path((0,0), (4,4)))
 
-# Compute and print the path from (0, 0) to (4, 4)
-path = dijkstra.compute_path((0, 0), (4, 4))

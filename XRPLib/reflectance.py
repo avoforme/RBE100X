@@ -1,9 +1,6 @@
 from machine import Pin, ADC
 
 class Reflectance:
-
-
-
     _DEFAULT_REFLECTANCE_INSTANCE = None
 
     @classmethod

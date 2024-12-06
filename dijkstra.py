@@ -1,5 +1,5 @@
-from dijkstra.grid import Grid
-from dijkstra.workqueue import WorkQueue
+from grid import Grid
+from workqueue import WorkQueue
 
 class Dijkstra:
     def __init__(self, grid: Grid):
@@ -63,5 +63,4 @@ class Dijkstra:
         path.reverse()
 
         # Print the path
-        print(f"Path from {source} to {destination}: {path}")
         return path

@@ -1,4 +1,4 @@
-from dijkstra.node import Node
+from node import Node
 # from node import Node
 class Grid:
     def __init__(self, rows: int, cols: int):
