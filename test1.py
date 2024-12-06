@@ -11,14 +11,13 @@ grid = Grid(GRID_ROWS, GRID_COLS)
 # Set some blocked nodes
 grid.set_blocked((1, 1))
 grid.set_blocked((2, 2))
-grid.set_blocked((3, 3))
 
 # Connect neighbors in the grid
 grid.connect_neighbors()
 
 # Initialize Dijkstra algorithm
 dijkstra = Dijkstra(grid)
-path = dijkstra.compute_path((0,0), (4,4))
+path = dijkstra.compute_path((0,0), (3,3))
 print(path)
 
 navigate = Navigate((0, 0), 0)
