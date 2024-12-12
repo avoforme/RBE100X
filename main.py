@@ -13,6 +13,7 @@ grid = Grid(GRID_ROWS, GRID_COLS)
 grid.set_blocked((2, 1))
 grid.set_blocked((0, 1))
 grid.set_blocked((1, 2))
+grid.set_blocked((3, 1))
 
 
 # Connect neighbors in the grid

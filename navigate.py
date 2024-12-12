@@ -15,22 +15,7 @@ class Navigate:
         self.linetrack = LineTrack()
         self.heading = heading
         self.location = location
-        self.path = []
 
-    # def compute_path(self, destination: tuple[int, int]) -> list[tuple[int, int]]:       
-    #     '''
-    #     Computes the shortest path from the current location to the destination using the specified algorithm.
-    #     ''' 
-
-    #     print("Starting at ", self.location)
-        
-    #     self.path = self.algorithm.compute_path(self.location, destination)
-        
-    #     print(self.path)
-    #     print("Ending at ", self.path[-1])
-    #     return self.path
-
-    
     def drive_to(self, location: tuple[int, int]) -> None:
         '''
         Moves from the current location to a specified adjacent location, adjusts the
