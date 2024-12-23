@@ -1,5 +1,7 @@
 from linesensors import LineSensors
 from linetrack import LineTrack
+from XRPLib.rangefinder import Rangefinder
+
 class Navigate:
     DIRECTION = ["N", "E", "S", "W"]
     '''
