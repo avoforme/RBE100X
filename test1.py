@@ -20,5 +20,5 @@ dijkstra = Dijkstra(grid)
 path = dijkstra.compute_path((0,0), (3,3))
 print(path)
 
-navigate = Navigate((0, 0), 0)
+navigate = Navigate((0, 0), 0, grid)
 navigate.drive_path(path)  # Drive the computed path

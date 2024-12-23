@@ -77,7 +77,7 @@ class LineTrack:
             self.drivetrain.set_effort(-0.5, 0.5)
 
 
-    def turn_then_track(self, current_heading, to_turn_to) -> None:
+    def turn_then_no_track(self, current_heading, to_turn_to) -> None:
         '''
         Turn the robot to the right direction with minimal turns, then track the line
         '''
@@ -98,9 +98,9 @@ class LineTrack:
             self.turn_around()
             current_heading = (current_heading + 2) % 4
 
-        # After turning, track and drive past the intersection
-        self.track_to_intersection()
-        self.drive_past_intersection()
+        # # After turning, track and drive past the intersection
+        # self.track_to_intersection()
+        # self.drive_past_intersection()
         
         print("Heading:", current_heading)
         return current_heading
@@ -114,3 +114,10 @@ class LineTrack:
         '''
         self.drivetrain.straight(8.5, self.DRIVE_SPEED * 0.5)
     
+
+    def after_turn(self) -> None:
+        '''
+        After turning, track the line
+        '''
+        self.track_to_intersection()
+        self.drive_past_intersection()
