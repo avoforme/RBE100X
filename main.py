@@ -25,22 +25,36 @@ dijkstra = Dijkstra(grid)
 current_location = (0, 0)
 navigate = Navigate(current_location, 0, grid)
 
-for destination in [(3,2), (2,1), (1,1)]:
+for destination in [(3,2), (1,1)]:
     print('----------------')
     path = dijkstra.compute_path(current_location, destination)
     print(path) 
     
-    while (path):
+    while path:
+        # Check if the next step in the path is blocked
+        next_step = path[1] if len(path) > 1 else None
+        
+        # If the next step is blocked, remove it from the path
+        if next_step and grid.get_node_at(next_step).blocked:
+            print(f"Skipping blocked node {next_step}.")
+            continue
+
         finish_path = navigate.drive_path(path)
-    
+
         if finish_path:
             print(f"Arrived at {destination}")
             break
         else:
+            # Update the current location
             current_location = navigate.location
+
+            # Reinitialize Dijkstra to consider the updated blocked grid
+            dijkstra = Dijkstra(grid)
             path = dijkstra.compute_path(current_location, destination)
-            print("Found intersection, new path: ", path)
+
+            print("Found obstacle, recalculated path: ", path)
             continue
+
     
                 
     if not path:

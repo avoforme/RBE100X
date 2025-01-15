@@ -24,16 +24,20 @@ class Grid:
         for row in range(self.rows):
             for col in range(self.cols):
                 node = self.get_node_at((row, col))
-                if not node.blocked:
-                    # Add neighbors if within grid bounds
-                    if row > 0:
-                        node.add_neighbor(self.get_node_at((row - 1, col)))
-                    if row < self.rows - 1:
-                        node.add_neighbor(self.get_node_at((row + 1, col)))
-                    if col > 0:
-                        node.add_neighbor(self.get_node_at((row, col - 1)))
-                    if col < self.cols - 1:
-                        node.add_neighbor(self.get_node_at((row, col + 1)))
+                if node.blocked:
+                    # Remove blocked node from its neighbors
+                    node.neighbors.clear()
+                    continue
+                # Add neighbors if within grid bounds and not blocked
+                if row > 0 and not self.get_node_at((row - 1, col)).blocked:
+                    node.add_neighbor(self.get_node_at((row - 1, col)))
+                if row < self.rows - 1 and not self.get_node_at((row + 1, col)).blocked:
+                    node.add_neighbor(self.get_node_at((row + 1, col)))
+                if col > 0 and not self.get_node_at((row, col - 1)).blocked:
+                    node.add_neighbor(self.get_node_at((row, col - 1)))
+                if col < self.cols - 1 and not self.get_node_at((row, col + 1)).blocked:
+                    node.add_neighbor(self.get_node_at((row, col + 1)))
+
 
     def print(self):
         print("\n ", end='')

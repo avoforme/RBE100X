@@ -55,26 +55,29 @@ class LineTrack:
         '''
         Turn the robot to the left
         '''
-        self.drivetrain.turn(40)
-        while not self.line_sense.either_on_line():
-            self.drivetrain.set_effort(-0.5, 0.5)
+        self.drivetrain.turn(90)
+        # self.drivetrain.turn(40)
+        # while not self.line_sense.either_on_line():
+        #     self.drivetrain.set_effort(-0.5, 0.5)
         
     def turn_right(self) -> None:
         '''
         Turn the robot to the right
         '''
-        self.drivetrain.turn(-40)
-        while not self.line_sense.either_on_line():
-            self.drivetrain.set_effort(0.5, -0.5)
+        self.drivetrain.turn(-90)
+        # self.drivetrain.turn(-40)
+        # while not self.line_sense.either_on_line():
+        #     self.drivetrain.set_effort(0.5, -0.5)
 
 
     def turn_around(self) -> None:
         '''
         Turn the robot around
         '''
-        self.drivetrain.turn(160)
-        while not self.line_sense.either_on_line():
-            self.drivetrain.set_effort(-0.5, 0.5)
+        self.drivetrain.turn(180)
+        # self.drivetrain.turn(160)
+        # while not self.line_sense.either_on_line():
+        #     self.drivetrain.set_effort(-0.5, 0.5)
 
 
     def turn_then_no_track(self, current_heading, to_turn_to) -> None:

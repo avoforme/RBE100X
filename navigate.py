@@ -38,6 +38,8 @@ class Navigate:
             self.heading = self.linetrack.turn_then_no_track(current_heading, 0)
             if self.detect_obstacle():
                 self.my_grid.set_blocked(location)
+                self.my_grid.connect_neighbors() 
+                print("Obstacle detected at", location)
                 return True
             self.linetrack.after_turn()
             current_row += 1
@@ -47,6 +49,8 @@ class Navigate:
             self.heading = self.linetrack.turn_then_no_track(current_heading, 2)
             if self.detect_obstacle():
                 self.my_grid.set_blocked(location)
+                self.my_grid.connect_neighbors() 
+                print("Obstacle detected at", location)
                 return True
             self.linetrack.after_turn() 
             current_row -= 1
@@ -56,6 +60,8 @@ class Navigate:
             self.heading = self.linetrack.turn_then_no_track(current_heading, 1)
             if self.detect_obstacle():
                 self.my_grid.set_blocked(location)
+                self.my_grid.connect_neighbors() 
+                print("Obstacle detected at", location)
                 return True
             self.linetrack.after_turn()
             current_col += 1   
@@ -65,6 +71,8 @@ class Navigate:
             self.heading = self.linetrack.turn_then_no_track(current_heading, 3)
             if self.detect_obstacle():
                 self.my_grid.set_blocked(location)
+                self.my_grid.connect_neighbors() 
+                print("Obstacle detected at", location)
                 return True
             self.linetrack.after_turn()
             current_col -= 1
@@ -90,4 +98,4 @@ class Navigate:
         '''
         distance = self.rangefinder.distance()
         print(f"Rangefinder distance: {distance} cm")
-        return distance < 10
+        return distance < 17
